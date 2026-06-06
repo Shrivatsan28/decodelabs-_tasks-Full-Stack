@@ -1,0 +1,524 @@
+/* ==========================================================================
+   IoT InFo Custom Styles & Premium Theme variables
+   ========================================================================== */
+
+/* Color tokens and styling defaults */
+:root {
+    --bg-dark: #0b0f19;
+    --bg-card: rgba(21, 28, 44, 0.65);
+    --bg-card-solid: #151c2c;
+    --bg-sidebar: #0f1422;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(0, 229, 255, 0.25);
+    
+    /* Neon Colors */
+    --neon-cyan: #00e5ff;
+    --neon-blue: #2979ff;
+    --neon-green: #00e676;
+    --neon-red: #ff1744;
+    --neon-yellow: #ffea00;
+    --neon-purple: #d500f9;
+    
+    /* Text secondary overrides */
+    --text-muted: #8a99ad;
+    --text-glow-cyan: 0 0 10px rgba(0, 229, 255, 0.5);
+    --text-glow-green: 0 0 10px rgba(0, 230, 118, 0.5);
+    --text-glow-red: 0 0 10px rgba(255, 23, 68, 0.5);
+    
+    /* Font Declarations */
+    --font-outfit: 'Outfit', sans-serif;
+    --font-inter: 'Inter', sans-serif;
+}
+
+/* Global resets & Scrollbar customization */
+body {
+    background-color: var(--bg-dark) !important;
+    font-family: var(--font-inter);
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.font-outfit {
+    font-family: var(--font-outfit);
+}
+
+.font-inter {
+    font-family: var(--font-inter);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+    background: #1f2a44;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-cyan);
+}
+
+/* Base utilities & helper classes */
+.tracking-wide {
+    letter-spacing: 0.07em;
+}
+
+.text-gradient-cyan {
+    background: linear-gradient(135deg, #00e5ff 0%, #2979ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+    background: linear-gradient(135deg, #d500f9 0%, #7c4dff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-orange {
+    background: linear-gradient(135deg, #ff9100 0%, #ff3d00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Panel styles */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 8px 36px 0 rgba(0, 229, 255, 0.08);
+}
+
+/* Glowing Indicator Dots */
+.glow-dot {
+    position: relative;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.glow-dot.online {
+    background-color: var(--neon-green);
+    box-shadow: var(--text-glow-green);
+}
+
+.glow-dot.online::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    border: 2px solid var(--neon-green);
+    animation: glow-ping 2s infinite ease-in-out;
+}
+
+.glow-dot.offline {
+    background-color: var(--neon-red);
+    box-shadow: var(--text-glow-red);
+}
+
+.glow-dot.maintenance {
+    background-color: var(--neon-yellow);
+    box-shadow: 0 0 10px rgba(255, 234, 0, 0.5);
+}
+
+/* Dashboard Shell Layout */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* Responsive Sidebar Navigation */
+.sidebar-wrapper {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-brand {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 1rem 0.75rem;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu-item {
+    margin-bottom: 0.35rem;
+}
+
+.sidebar-menu-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu-link i {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu-link:hover, .sidebar-menu-link.active {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+.sidebar-menu-link.active {
+    background-color: rgba(0, 229, 255, 0.08);
+    color: var(--neon-cyan);
+    border-left: 3px solid var(--neon-cyan);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.sidebar-menu-link.active i {
+    color: var(--neon-cyan);
+}
+
+/* Main Content Wrapper */
+.main-viewport {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: var(--bg-dark);
+}
+
+/* Top Navbar styling */
+.top-navbar {
+    height: 70px;
+    background-color: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 2rem;
+    /* Fix: position is required for z-index to take effect */
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+}
+
+/* Fix: Ensure navbar dropdowns always float above all cards/content.
+   Glass-card elements using backdrop-filter create new stacking contexts
+   that can swallow children of sibling elements. */
+.top-navbar .dropdown-menu {
+    z-index: 9999 !important;
+}
+
+.top-navbar .nav-icon {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    padding: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.top-navbar .nav-icon:hover {
+    color: #ffffff;
+}
+
+.top-navbar .notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: var(--text-glow-cyan);
+}
+
+/* Mobile responsive hamburger toggle */
+.sidebar-toggle-btn {
+    display: none;
+}
+
+/* Transitions for dynamic page navigation */
+.page-fade-in {
+    animation: page-fade 0.4s ease-out forwards;
+}
+
+/* Custom inputs inside forms */
+.form-control-dark {
+    background-color: rgba(15, 20, 34, 0.6) !important;
+    border: 1px solid var(--border-color) !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-control-dark:focus {
+    background-color: #0f1422 !important;
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2) !important;
+    outline: 0;
+}
+
+.form-select-dark {
+    background-color: rgba(15, 20, 34, 0.6) !important;
+    border: 1px solid var(--border-color) !important;
+    color: #ffffff !important;
+    border-radius: 8px;
+    padding: 0.65rem 1.75rem 0.65rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-select-dark:focus {
+    background-color: #0f1422 !important;
+    border-color: var(--neon-cyan) !important;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2) !important;
+    outline: 0;
+}
+
+/* Table overrides for dark mode elegance */
+.table-dark-custom {
+    background: transparent !important;
+    color: #e2e8f0;
+}
+
+.table-dark-custom th {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.table-dark-custom td {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    vertical-align: middle;
+    padding: 0.85rem 0.75rem;
+}
+
+.table-dark-custom tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.table-dark-custom tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.015) !important;
+}
+
+/* Action button designs */
+.btn-neon-cyan {
+    background: linear-gradient(135deg, #00e5ff 0%, #2979ff 100%);
+    border: none;
+    color: #000000;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.6rem 1.25rem;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.2);
+}
+
+.btn-neon-cyan:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 229, 255, 0.35);
+    color: #000000;
+}
+
+.btn-outline-neon {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 0.55rem 1.25rem;
+    transition: all 0.25s ease;
+}
+
+.btn-outline-neon:hover {
+    background: rgba(0, 229, 255, 0.08);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+}
+
+/* Landing Page Specific Customizations */
+.landing-hero {
+    position: relative;
+    background: radial-gradient(circle at 80% 20%, rgba(0, 229, 255, 0.1) 0%, transparent 60%);
+}
+
+.landing-glow-blob {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(41, 121, 255, 0.12) 0%, transparent 70%);
+    top: 10%;
+    left: 5%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Authentication Page layout */
+.auth-page-wrapper {
+    background: radial-gradient(circle at 50% 50%, rgba(21, 28, 44, 0.7) 0%, #0b0f19 80%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.auth-card {
+    max-width: 450px;
+    width: 100%;
+}
+
+/* Keyframes and Animations */
+@keyframes glow-ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2.2);
+        opacity: 0;
+    }
+}
+
+@keyframes page-fade {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Chart container constraints */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Notification Drawer dropdown customized */
+.notify-dropdown {
+    width: 320px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: var(--bg-card-solid);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 0;
+}
+
+.notify-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1rem;
+    transition: background-color 0.2s ease;
+    font-size: 0.85rem;
+}
+
+.notify-item:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.notify-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Breakpoints & Overlays */
+@media (max-width: 991.98px) {
+    .sidebar-wrapper {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        bottom: 0;
+    }
+    
+    .sidebar-wrapper.mobile-open {
+        left: 0;
+        box-shadow: 5px 0 30px rgba(0,0,0,0.8);
+    }
+    
+    .sidebar-toggle-btn {
+        display: inline-block;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        color: #ffffff;
+        margin-right: 1rem;
+        cursor: pointer;
+        padding: 0;
+    }
+    
+    .top-navbar {
+        padding: 0 1rem;
+    }
+    
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(4px);
+        z-index: 1030;
+    }
+    
+    .sidebar-overlay.show {
+        display: block;
+    }
+}
+
+/* Premium smooth transitions & bounce keyframes */
+.progress-bar {
+    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-6px);
+    }
+}
+

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT InFo | IoT Device Monitoring & Analytics</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="IoT InFo is a premium, real-time IoT device monitoring dashboard frontend featuring state-of-the-art telemetry charting, device management, notification grids, and reports.">
+    <meta name="keywords" content="IoT, Dashboard, Telemetry, Responsive, Dark Theme, Bootstrap 5, Chart.js, Realtime Simulation">
+    
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS (Using latest 5.3) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Custom Custom Variables and Themes CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <link class="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body class="bg-dark text-light overflow-x-hidden">
+    <!-- Main Application Entry point -->
+    <div id="app">
+        <!-- Loader / Initial Loading State -->
+        <div class="d-flex flex-column justify-content-center align-items-center vh-100" id="initial-loader">
+            <div class="spinner-border text-info mb-3" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading IoT InFo...</span>
+            </div>
+            <h4 class="font-outfit fw-bold tracking-wide text-uppercase text-info animate-pulse">IoT InFo Core Engine</h4>
+            <p class="text-secondary small mt-1">Initializing telemetry simulator and canvas graphics...</p>
+        </div>
+    </div>
+
+    <!-- Chart.js - loaded globally first so modular scripts can access it -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    
+    <!-- Bootstrap 5 Bundle (contains Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Application Logic Entry -->
+    <script type="module" src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

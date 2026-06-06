@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+
+# Databases
+db.sqlite3
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Agent system generated files
+.system_generated/
